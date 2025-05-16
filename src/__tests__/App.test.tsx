@@ -28,7 +28,7 @@ describe("App", () => {
     renderApp();
 
     // initial loading state
-    expect(screen.getByText("Loading films...")).toBeInTheDocument();
+    expect(screen.getByTestId("loading")).toBeInTheDocument();
 
     act(() => {
       environment.mock.resolveMostRecentOperation((op: OperationDescriptor) =>
@@ -84,7 +84,7 @@ describe("App", () => {
     renderApp();
 
     // initial loading state
-    expect(screen.getByText("Loading films...")).toBeInTheDocument();
+    expect(screen.getByTestId("loading")).toBeInTheDocument();
 
     act(() => {
       environment.mock.resolveMostRecentOperation((op: OperationDescriptor) =>

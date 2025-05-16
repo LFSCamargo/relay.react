@@ -21,7 +21,10 @@ export default function App() {
       </h1>
       <Suspense
         fallback={
-          <div className="flex flex-col h-[128px] gap-1 justify-center items-center">
+          <div
+            className="flex flex-col h-[128px] gap-1 justify-center items-center"
+            data-testid="loading"
+          >
             <SyncLoader color="#000" size={4} className="flex " />
           </div>
         }
