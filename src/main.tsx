@@ -1,10 +1,11 @@
 import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.tsx";
 import { RelayEnvironmentProvider } from "react-relay";
 import { Environment, Network } from "relay-runtime";
 import type { FetchFunction } from "relay-runtime";
+
+import App from "./App.tsx";
+import "./index.css";
 
 const HTTP_ENDPOINT = "https://graphql.org/graphql/";
 
@@ -31,5 +32,5 @@ createRoot(document.getElementById("root")!).render(
         <App />
       </Suspense>
     </RelayEnvironmentProvider>
-  </StrictMode>
+  </StrictMode>,
 );

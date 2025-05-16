@@ -5,9 +5,10 @@ import type { AppQuery } from "../__generated__/AppQuery.graphql";
 
 type FilmListProps = {
   data: FilmsList$key;
+  pageSize?: number;
 };
 
-export default function FilmList({ data }: FilmListProps) {
+export default function FilmList({ data, pageSize = 3 }: FilmListProps) {
   const {
     data: fragmentData,
     loadNext,
@@ -41,7 +42,7 @@ export default function FilmList({ data }: FilmListProps) {
 
   // Render the list of films
   return (
-    <div data-testid="film-list">
+    <div data-testid="film-list" className="flex flex-col">
       {fragmentData.allFilms?.edges!.map((edge) => {
         const filmNode = edge!.node;
 
@@ -53,11 +54,13 @@ export default function FilmList({ data }: FilmListProps) {
       {/* "Load More" button for pagination */}
       {hasNext /* if there's another page available */ && (
         <button
-          onClick={() => loadNext(2)} // load 5 more items
+          className="flex flex-row px-4 py-2 mt-4  bg-neutral-500 text-white rounded-xl justify-center disabled:cursor-progress disabled:opacity-50"
+          onClick={() => loadNext(pageSize)} // load 5 more items
           disabled={isLoadingNext}
           data-testid="load-more-button"
+          aria-disabled={isLoadingNext}
         >
-          {isLoadingNext ? "Loading..." : "Load More"}
+          Load More
         </button>
       )}
     </div>
