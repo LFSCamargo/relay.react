@@ -26,8 +26,6 @@ export default function FilmList({ data }: FilmListProps) {
           edges {
             node {
               id
-              title
-              director
               ...Film_item
             }
           }
