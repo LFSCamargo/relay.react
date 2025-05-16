@@ -15,7 +15,7 @@
     "test:coverage": "vitest run --coverage",
     "lint:all": "npm run lint && npm run build",
     "format": "prettier --write src/**/*.{ts,tsx,css}",
-    "prepare": "husky"
+    "prepare": "npm run relay && husky install"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
