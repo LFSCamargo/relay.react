@@ -80,7 +80,7 @@ describe("App", () => {
     expect(screen.queryByTestId("load-more-button")).toBeNull();
   });
 
-  it("", async () => {
+  it("should handle empty nodes in edges", async () => {
     renderApp();
 
     // initial loading state
