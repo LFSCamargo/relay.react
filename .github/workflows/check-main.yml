@@ -1,4 +1,4 @@
-name: 'Check Pull Request'
+name: 'Code Quality Check - `main` Branch'
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  ci:
+  code-quality-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
