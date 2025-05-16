@@ -1,6 +1,7 @@
 import { graphql, usePaginationFragment } from "react-relay";
 import FilmListItem from "./Film";
 import type { FilmsList$key } from "./__generated__/FilmsList.graphql";
+import type { AppQuery } from "../__generated__/AppQuery.graphql";
 
 type FilmListProps = {
   data: FilmsList$key;
@@ -12,7 +13,7 @@ export default function FilmList({ data }: FilmListProps) {
     loadNext,
     hasNext,
     isLoadingNext,
-  } = usePaginationFragment<any, FilmsList$key>(
+  } = usePaginationFragment<AppQuery, FilmsList$key>(
     graphql`
       fragment FilmsList on Root
       @refetchable(queryName: "FilmListPaginationQuery")
@@ -37,7 +38,7 @@ export default function FilmList({ data }: FilmListProps) {
         }
       }
     `,
-    data
+    data,
   );
 
   // Render the list of films

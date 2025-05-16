@@ -9,7 +9,7 @@ export default function FilmListItem(props: { film: Film_item$key }) {
         director
       }
     `,
-    props.film
+    props.film,
   );
 
   return (

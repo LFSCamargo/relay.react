@@ -21,18 +21,17 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      "relay/unused-fields": [
-        "warn",
-        {
-          excludePattern: "^(?!__generated__).*",
-          excludeTypes: ["__typename"],
-          excludeFields: ["id", "__typename"],
-        },
-      ],
+      "relay/graphql-syntax": "error",
+      "relay/graphql-naming": "error",
+      "relay/must-colocate-fragment-spreads": "warn",
+      "relay/no-future-added-value": "warn",
+      "relay/unused-fields": "warn",
+      "relay/function-required-argument": "warn",
+      "relay/hook-required-argument": "warn",
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },
       ],
     },
-  }
+  },
 );

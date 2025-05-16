@@ -4,15 +4,29 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "npm run relay && vite",
+    "build": "npm run relay && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "relay": "npx relay-compiler",
     "relay:watch": "npx relay-compiler --watch",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "lint:all": "npm run lint && npm run build",
+    "format": "prettier --write src/**/*.{ts,tsx,css}",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{css}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "@types/relay-test-utils": "^19.0.0",
@@ -44,6 +58,8 @@
     "eslint-plugin-relay": "^2.0.0",
     "globals": "^16.0.0",
     "graphql": "^16.11.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.5.3",
     "relay-compiler": "^19.0.0",
     "ts-node": "^10.9.2",
     "typescript": "~5.8.3",
