@@ -7,17 +7,6 @@ export default function FilmListItem(props: { film: Film_item$key }) {
       fragment Film_item on Film {
         title
         director
-        releaseDate
-        episodeID
-        openingCrawl
-        characterConnection {
-          edges {
-            node {
-              name
-              id
-            }
-          }
-        }
       }
     `,
     props.film

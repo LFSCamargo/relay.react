@@ -11,7 +11,15 @@ export default defineConfig({
     css: true, // Enable CSS if you're importing CSS files in components
     coverage: {
       reporter: ["text", "lcov"], // Coverage reporters
-      exclude: ["node_modules/", "./tests/setup.ts"],
+      exclude: [
+        "node_modules/",
+        "./tests/setup.ts",
+        "src/**/__generated__/*",
+        "eslint.config.js",
+        "vite.config.ts",
+        "vitest.config.js",
+        "src/main.tsx",
+      ], // Exclude certain files from coverage
     },
   },
 });

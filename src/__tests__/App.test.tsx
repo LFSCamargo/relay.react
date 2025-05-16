@@ -1,4 +1,4 @@
-import { expect } from "vitest";
+import { describe, beforeEach, expect, it } from "vitest";
 import { act, Suspense } from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { createMockEnvironment, MockPayloadGenerator } from "relay-test-utils";
@@ -75,5 +75,30 @@ describe("App", () => {
       expect(screen.getAllByTestId("film-list-item")).toHaveLength(4)
     );
     expect(screen.queryByTestId("load-more-button")).toBeNull();
+  });
+
+  it("", async () => {
+    renderApp();
+
+    // initial loading state
+    expect(screen.getByText("Loading films...")).toBeInTheDocument();
+
+    act(() => {
+      environment.mock.resolveMostRecentOperation((op: any) =>
+        MockPayloadGenerator.generate(op, {
+          FilmsConnection() {
+            return {
+              edges: [{ node: null }, { node: null }],
+              pageInfo: { endCursor: "cursor2", hasNextPage: false },
+            };
+          },
+        })
+      );
+    });
+
+    // assert rendered list
+    await waitFor(() =>
+      expect(screen.getAllByTestId("film-list")).toHaveLength(1)
+    );
   });
 });

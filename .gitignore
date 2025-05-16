@@ -25,3 +25,4 @@ dist-ssr
 
 # Relay GraphQL Generated files
 __generated__/
+coverage/*
